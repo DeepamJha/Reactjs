@@ -1,29 +1,39 @@
-import React from 'react'
+import React from 'react';
 
-function Card({username = " HC ", post = "Not assigned yet"}) {
-    //console.log(props);
+function Card() {
+  const data = [
+    { Title: "Bankai", Image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlcrQ56W1ZvcgNr2qqo-6VBWMn2qBCuc8OJw&s", description: "lorem ipsum dolor sit amet, consectetur adip" },
+    { Title: "Domain Expansion", Image: "https://staticg.sportskeeda.com/editor/2024/01/0c995-17048567087154-1920.jpg", description: "domain Expansion" },
+    { Title: "Kamehameha", Image: "https://static1.cbrimages.com/wordpress/wp-content/uploads/2023/09/goku-kamehameha.jpg?q=50&fit=crop&w=1140&h=&dpr=1.5", description: "kamehame" }
+  ];
+
   return (
-    <div>
-       <figure className="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
-        <img className="w-24 h-24 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto" src="https://images.pexels.com/photos/18264716/pexels-photo-18264716/free-photo-of-man-in-headphones-showing-programming-process-on-a-laptop.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" width="384" height="512" />
-        <div className="pt-6 md:p-8 text-center md:text-left space-y-4">
-            <blockquote>
-            <p className="text-lg font-medium">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, quaerat.
-            </p>
-            </blockquote>
-            <figcaption className="font-medium">
-            <div className="text-sky-500 dark:text-sky-400">
-                {username }
+    <div className="w-full min-h-screen bg-zinc-200 flex justify-center items-center">
+      {/* Flex container for cards */}
+      <div className="flex gap-5 flex-wrap justify-center">
+        {data.map((value, index) => (
+          <div key={index} className="bg-zinc-100 rounded-md overflow-hidden shadow-lg w-80">
+            {/* Image Section */}
+            <div className="w-full h-32 bg-zinc-300">
+              <img 
+                className="w-full h-full object-cover object-top" 
+                src={value.Image} 
+                alt={value.Title} 
+              />
             </div>
-            <div className="text-slate-700 dark:text-slate-500">
-                {post}
+
+            {/* Text Section */}
+            <div className="w-full px-4 py-5">
+              <h2 className="font-semibold text-center text-lg">{value.Title}</h2>
+              <p className="text-xs mt-3 text-center text-gray-600">
+                {value.description}
+              </p>
             </div>
-            </figcaption>
-        </div>
-        </figure> 
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;
